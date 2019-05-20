@@ -1,8 +1,7 @@
-A Pen created at CodePen.io. You can find this one at https://codepen.io/fixcl/pen/bsIhn.
+A Pen created at CodePen.io. You can find this one at https://codepen.io/forbesg/pen/eNBLRa.
 
- A new birthday, a new cake.
+ Take two names (strings) and creates an array of the occurrances of the letters "l", "o", "v", "e" and "s".
 
--SVG
--CSS
+The array is then reduced by adding each array value with the adjacent value until there are only two values are left.
 
-based on: http://codepen.io/fixcl/pen/nKFDr
+These two integers are joined and converted to a string and displayed to the user as a percentage.
