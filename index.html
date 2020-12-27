@@ -1,35 +1,96 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>special cert award</title>
+	</head>
+	<body>
+		<pre>
+		<!-- <input type="text" placeholder="请输入姓名" id="text" >
+		请输入相关文字:
+		<input type="text" id="prize">
+		请输入日期：
+		<input type="date" id="day"> -->
+		<input type="button" value="接受颁奖吧" id="submit">
+		</pre>
+		<pre>
+		    <canvas style="background-color: #fff;visibility: hidden;" id="myCanVas" width="600" height="865">不好意思！！您的浏览器不支持canvas标签</canvas>
+		</pre>
+		
+		<script type="text/javascript">
+			var can = document.getElementById("myCanVas");
+			var myCan = can.getContext("2d");
+			var img = new Image();
+			img.src = "img/bg.jpg";
+			img.onload = function() {
+				myCan.drawImage(img, 0, 0,600,865);
+			}
+			setTimeout(function() {
+							var imgt = new Image();
+							// imgt.src = "img/seal.png";
+							imgt.src = "img/pass2.png";
+							imgt.onload = function() {
+								myCan.drawImage(imgt, 365, 570,150,150);
+							}
+						}, 100 /*设置100的延迟*/);
+			var txt = document.getElementById("text");
+			var pr = document.getElementById("prize");
+			var da = document.getElementById("day");
+			var but = document.getElementById("submit");
+			// but.onclick = function() {
+			// 	myCan.beginPath();
+			// 	myCan.font = "22px Arial";
+			// 	myCan.fillText(txt.value, 140, 390);
+			// 	drawText(pr.value, 128, 410, 358);
+			// 	myCan.fillText(da.value, 380, 660);
+			// 	myCan.closePath();
+			// }
 
-<head>
-  <meta charset="UTF-8">
-  <title>示例</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-<!--   <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'> -->
 
-      <link rel="stylesheet" href="css/style.css">
-
-  
-</head>
-
-<body>
-
-  <div class="container">
-	
-	  
-	  <video controls="controls">
-		  <source src="example.mp4"  type="video/mp4">
-	  </video>
-  </div>
-  
-  
-
-  <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
+			but.onclick = function() {
+				myCan.beginPath();
+				myCan.font = "22px Arial";
+				myCan.fillText("张晓璇", 140, 390);
+				drawText("恭喜历经4个月的学习，顺利完成韩语一级课程，特此颁奖，再接再厉，勿忘这段经历。파이팅!", 128, 410, 320);
+				myCan.fillText("2020-12-27" ,380, 660);
+				myCan.closePath();
+				can.style.visibility="";
+				but.style.display="none";
+			}
+			
+			function drawText(t, x, y, w) {
+							var chr = t.split("");
+							var temp = "";
+							var row = [];
+							var count = 0;
+							myCan.font = "21px 宋体";
+							for(var a = 0; a < chr.length; a++) {
+								if(count == 0) {
+									if(myCan.measureText(temp).width < w - 40) {;
+									} else {
+										count += 1;
+										row.push(temp);
+										temp = "";
+									}
+									temp += chr[a];
+								} else {
+									if(myCan.measureText(temp).width < w) {;
+									} else {
+										count += 1;
+										row.push(temp);
+										temp = "";
+									}
+									temp += chr[a];
+								}
+							}
+			 
+							row.push(temp);
+			 
+							for(var b = 0; b < row.length; b++) {
+			 
+								myCan.fillText(row[b], b==0?x+40:x, y + (b + 1) * 30);
+							}
+						}
+		</script>
+	</body>
 </html>
